@@ -9,18 +9,20 @@ class TodoItem extends Component {
     };
   }
 
-  handleToggleStatus() {
+  handleStatus = () => {
+    this.props.status(this.props.todo.id)
+
     this.setState({
       status: !this.state.status
     })
   }
 
-  handleEditClick() {
-    console.log("edit");
+  handleEdit = () => {
+    this.props.editItem(this.props.todo.id)
   }
 
-  handleDeleteClick() {
-    console.log("handleDeleteClick");
+  handleDelete = () => {
+    this.props.deleteItem(this.props.todo.id)
   }
 
   render() {
@@ -28,16 +30,16 @@ class TodoItem extends Component {
       <div className="todo-item-container">
         <span
           className="todo-item-toggle"
-          onClick={() => this.handleToggleStatus()}
+          onClick={this.handleStatus}
         >
           <img className="status" src={this.state.status ? "assets/active-tick.svg" : "assets/complete-tick.svg"} alt="tick" />
         </span>
         <div className={this.state.status ? "todo-item-content" : "todo-item-content  completed"}>{this.props.todo.title}</div>
         <div className="todo-item-options">
-          <span className="icon-btn" onClick={() => this.handleEditClick()}>
+          <span className="icon-btn" onClick={this.handleEdit}>
             <img src="assets/edit.svg" alt="edit" />
           </span>
-          <span className="icon-btn" onClick={() => this.handleDeleteClick()}>
+          <span className="icon-btn" onClick={this.handleDelete}>
             <img src="assets/delete.svg" alt="close" />
           </span>
         </div>

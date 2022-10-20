@@ -12,7 +12,7 @@ class TodoList extends Component {
     return (
       <div className="todo-list-container">
         {this.props.todos.map((item) => (
-          <TodoItem todo={item} key={item.id} />
+          <TodoItem todo={item} key={item.id} editItem={this.props.edit} deleteItem={this.props.delete} status={this.props.status}/>
         ))}
       </div>
     );

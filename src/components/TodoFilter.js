@@ -9,20 +9,22 @@ class TodoFilter extends Component {
     };
   }
 
-  onclick(index) {
+  activity = (e) => {
+    this.props.activity(e.currentTarget.id)
+
     this.setState({
-      currentIndex: index
+      currentIndex: Number(e.target.id)
     })
   }
-
+  
   render() {
     return (
       <div className="todo-footer-container">
         <div className="todo-count">{this.props.length} items left</div>
         <div className="todo-menus">
-          <span className={this.state.currentIndex === 1 ? "activity" : "inactive"} onClick={()=> {this.onclick(1)}}>All</span>
-          <span className={this.state.currentIndex === 2 ? "activity" : "inactive"} onClick={()=> {this.onclick(2)}}>Active</span>
-          <span className={this.state.currentIndex === 3 ? "activity" : "inactive"} onClick={()=> {this.onclick(3)}}>Complete</span>
+          <span id="1" className={this.state.currentIndex === 1 ? "activity" : ""} onClick={this.activity}>All</span>
+          <span id="2" className={this.state.currentIndex === 2 ? "activity" : ""} onClick={this.activity}>Active</span>
+          <span id="3" className={this.state.currentIndex === 3 ? "activity" : ""} onClick={this.activity}>Complete</span>
         </div>
       </div>
     );
