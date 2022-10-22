@@ -12,17 +12,6 @@ class TodoFilter extends Component {
   activity = (e) => {
     this.props.activity(Number(e.currentTarget.id));
 
-    const active = this.props.todos.filter((item) => item.isCompleted === true);
-    const completed = this.props.todos.filter(
-      (item) => item.isCompleted === false
-    );
-
-    Number(e.currentTarget.id) === 1
-      ? this.props.activity(this.props.todos)
-      : Number(e.currentTarget.id) === 2
-      ? this.props.activity(active)
-      : this.props.activity(completed);
-
     this.setState({
       currentIndex: Number(e.target.id),
     });

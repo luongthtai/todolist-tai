@@ -44,7 +44,17 @@ class TodoApp extends Component {
   // filter todo list
 
   activity(value) {
-    console.log(value)
+    value === 1
+      ? console.log("todos: ",this.state.todos)
+      : value === 2
+      ? console.log(
+          "active: ",
+          this.state.todos.filter((item) => item.isCompleted === true)
+        )
+      : console.log(
+          "completed: ",
+          this.state.todos.filter((item) => item.isCompleted === false)
+        );
   }
 
   // handle status todo item
