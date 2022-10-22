@@ -31,20 +31,20 @@ class TodoApp extends Component {
 
   handleSubmit(value) {
     this.state.todos.push({
-      id: this.state.todos.length + 1,
+      id: this.state.todos.length === 0 ? 1 : this.state.todos[this.state.todos.length - 1].id + 1,
       title: value,
       isCompleted: true,
     });
 
     this.setState({
-      todos: this.state.todos,
+      todos: this.state.todos
     });
   }
 
   // filter todo list
 
   activity(value) {
-    console.log(value);
+    console.log(value)
   }
 
   // handle status todo item
@@ -87,7 +87,7 @@ class TodoApp extends Component {
 
           <div className="todo-container">
             <TodoForm title={this.handleSubmit} />
-            <TodoFilter length={this.todosLength()} activity={this.activity} />
+            <TodoFilter length={this.todosLength()} activity={this.activity} todos={this.state.todos}/>
             <TodoList
               todos={this.state.todos}
               edit={this.handleEdit}
